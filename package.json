@@ -1,0 +1,28 @@
+{
+  "name": "portfolio-server",
+  "version": "1.0.0",
+  "description": "My portfolio server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "admin:user:create": "node scripts/createUser.js createUser"
+  },
+  "author": "Del001",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "commander": "^10.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.10.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "promptly": "^3.2.0",
+    "validator": "^13.9.0"
+  }
+}
