@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const AdminUser = require("../models/adminUsers");
 const jwtSecret = process.env.JWT_SECRET;
 
-exports.login = async function (req, res) {
+const login = async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -34,10 +34,12 @@ exports.login = async function (req, res) {
   }
 };
 
-exports.logout = function (req, res) {
+const logout = (req, res) => {
   // Remove the token cookie and CSRF cookie
   res.clearCookie("jwt");
   res.clearCookie("XSRF-TOKEN");
 
   res.json({ message: "Logout successful" });
 };
+
+module.exports = { login, logout };
