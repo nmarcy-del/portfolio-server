@@ -2,9 +2,9 @@ const jwt = require("jsonwebtoken");
 const AdminUser = require("../models/adminUsers");
 const jwtSecret = process.env.JWT_SECRET;
 
+// Log admin user
 const login = async (req, res) => {
   const { username, password } = req.body;
-
   try {
     const user = await AdminUser.findOne({ username: username });
     if (!user || !user.validPassword(password)) {
@@ -12,32 +12,35 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, jwtSecret, {
-      expiresIn: 3600,
+      expiresIn: 1800,
       algorithm: "HS256",
     });
 
-    // Store the token in a secure cookie
-    res.cookie("jwt", token, {
+    const csrfToken = req.csrfToken();
+
+    res.cookie("XSRF-TOKEN", csrfToken, {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: "strict",
-    });
-    res.cookie("XSRF-TOKEN", req.csrfToken(), {
-      secure: true,
-      sameSite: "strict",
+      domain: process.env.DOMAIN || "myapp.local",
+      path: "/",
+      maxAge: 1800,
     });
 
-    return res.json({ message: "Login successful", data: { token } });
+    return res.json({
+      message: "Login successful",
+      data: { token, csrfToken },
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
 
+// Delog admin user
 const logout = (req, res) => {
-  // Remove the token cookie and CSRF cookie
+  // Remove the token cookie
   res.clearCookie("jwt");
-  res.clearCookie("XSRF-TOKEN");
 
   res.json({ message: "Logout successful" });
 };

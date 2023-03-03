@@ -2,32 +2,23 @@ require("dotenv").config();
 require("./models/db");
 const express = require("express");
 const passport = require("./middlewares/passport");
-const cors = require("cors");
+const corsMiddleware = require("./middlewares/cors");
+const {
+  csrfProtection,
+  cookieParserMiddleware,
+} = require("./middlewares/csrf");
 
 const port = process.env.PORT || 5000;
 const app = express();
 
 // Allow cross-origin requests
 
-const whitelist = process.env.CORS_WHITELIST
-  ? process.env.CORS_WHITELIST.split(",")
-  : [];
+app.use(corsMiddleware);
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (
-      whitelist.indexOf("*") !== -1 ||
-      whitelist.indexOf(origin) !== -1 ||
-      !origin
-    ) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
+// Add csrf protection
 
-app.use(cors(corsOptions));
+app.use(cookieParserMiddleware);
+app.use(csrfProtection);
 
 // Define http response on root
 
@@ -38,9 +29,11 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Configure Passport
+// Initialise passport
 
-app.use(passport.initialize()); // Initialise passport
+app.use(passport.initialize());
+
+// Set authentification routes
 
 const authRoutes = require("./routes/authRoutes");
 app.use("/auth", authRoutes);

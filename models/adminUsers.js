@@ -21,4 +21,6 @@ adminUsersSchema.pre("save", function (next) {
   next();
 });
 
-module.exports = mongoose.model("AdminUser", adminUsersSchema);
+const AdminUser = mongoose.model("AdminUser", adminUsersSchema);
+
+module.exports = AdminUser;

@@ -42,11 +42,6 @@ program
         user.canEdit = false;
       }
 
-      // Hash the password
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(user.password, salt);
-      user.password = hash;
-
       // Save the user to the database
       await user.save();
       console.log(`User ${user.username} created successfully.`);
