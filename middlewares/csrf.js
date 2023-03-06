@@ -1,11 +1,10 @@
 const csrf = require("tiny-csrf");
 const cookieParser = require("cookie-parser");
+const config = require("../config");
 
-const csrfSecret =
-  process.env.CSRF_SECRET || "csrf-secret123456789745455757757";
+const csrfSecret = config.csrfSecret;
 
-const cookieParserSecret =
-  process.env.COOKIE_PARSER_SECRET || "cookie-parser-secret";
+const cookieParserSecret = config.cookieParserSecret;
 
 const protectedMethods = ["PUT", "PATCH", "POST", "DELETE"];
 

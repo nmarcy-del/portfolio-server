@@ -1,9 +1,8 @@
 const program = require("commander");
 const promptly = require("promptly");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 const AdminUser = require("../models/adminUsers");
-const connection = require("../models/db");
+const connection = require("../middlewares/db");
 
 // Configure commander.js
 program.version("1.0.0").description("CLI tool to create a new user");
@@ -45,9 +44,6 @@ program
       // Save the user to the database
       await user.save();
       console.log(`User ${user.username} created successfully.`);
-
-      // Disconnect from the database
-      connection.close();
     } catch (err) {
       if (err.message.toLowerCase().includes("canceled")) {
         console.log(
@@ -58,6 +54,9 @@ program
           "An error occurred.. Press Ctrl + C to exit the program."
         );
       }
+    } finally {
+      // Disconnect from the database
+      connection.close();
     }
   });
 

@@ -1,5 +1,5 @@
-require("dotenv").config();
-require("./models/db");
+require("./middlewares/db");
+const config = require("./config");
 const express = require("express");
 const passport = require("./middlewares/passport");
 const corsMiddleware = require("./middlewares/cors");
@@ -8,7 +8,7 @@ const {
   cookieParserMiddleware,
 } = require("./middlewares/csrf");
 
-const port = process.env.PORT || 5000;
+const port = config.port;
 const app = express();
 
 // Allow cross-origin requests

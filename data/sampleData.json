@@ -1,0 +1,66 @@
+{
+  "cms": [
+    {
+      "title": "Mon titre 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "img": "img1.jpg",
+      "section": "section 1",
+      "typeWriter": "Typewriter 1"
+    },
+    {
+      "title": "Mon titre 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "img": "img2.jpg",
+      "section": "section 2",
+      "typeWriter": "Typewriter 2"
+    }
+  ],
+  "contactInformations": [
+    {
+      "adressL1": "Adresse ligne 1",
+      "adressL2": "Adresse ligne 2",
+      "postalCode": "75000",
+      "city": "Paris",
+      "phone": "0123456789",
+      "email": "contact@example.com",
+      "linkedin": "https://www.linkedin.com/",
+      "github": "https://github.com/"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Skill 1",
+      "img": "skill1.png"
+    },
+    {
+      "name": "Skill 2",
+      "img": "skill2.png"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Tool 1",
+      "img": "tool1.png"
+    },
+    {
+      "name": "Tool 2",
+      "img": "tool2.png"
+    }
+  ],
+  "works": [
+    {
+      "title": "Work 1",
+      "shortDesc": "Short description 1",
+      "img": "work1.jpg",
+      "desc": "Description 1",
+      "technologie": "Technologie 1"
+    },
+    {
+      "title": "Work 2",
+      "shortDesc": "Short description 2",
+      "img": "work2.jpg",
+      "desc": "Description 2",
+      "technologie": "Technologie 2"
+    }
+  ]
+}

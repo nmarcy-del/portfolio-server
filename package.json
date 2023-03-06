@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "admin:user:create": "node scripts/createUser.js createUser"
+    "admin:user:create": "node scripts/createUser.js createUser",
+    "admin:user:show": "node scripts/showUsers.js showUsers",
+    "data:import": "node scripts/dataImport.js importData"
   },
   "author": "Del001",
   "license": "ISC",

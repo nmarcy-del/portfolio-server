@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
-const uri = process.env.MONGO_DB_URI;
+const config = require("../config");
+const domain = config.domain;
+const subDomain = config.subDomain;
+const dbName = config.mongoDbName;
+const mongoDbUri = `mongodb://${subDomain}.${domain}/${dbName}`;
 
 mongoose.set("strictQuery", false); // prepare the future change on mongoose
 
 mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoDbUri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error(error));
 
