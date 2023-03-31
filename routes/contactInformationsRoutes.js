@@ -14,6 +14,12 @@ router.get(
   contactInformationsController.getContactInformationById
 );
 
+// GET - Get contact information by addressName
+router.get(
+  "/contacts/addressName/:addressName",
+  contactInformationsController.getContactInformationByAddressName
+);
+
 // POST - Create contact information
 router.post(
   "/contacts",

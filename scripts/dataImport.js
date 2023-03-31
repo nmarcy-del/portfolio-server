@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Import the models
-const CMS = require("../models/cms");
+const CmsBlock = require("../models/cmsBlock");
 const ContactInformations = require("../models/contactInformations");
 const Skills = require("../models/skills");
 const Tools = require("../models/tools");
@@ -38,8 +38,8 @@ program
         await connection;
 
         // Insert CMS data if it exists
-        if (data.cms) {
-          await CMS.insertMany(data.cms);
+        if (data.cmsBlock) {
+          await CmsBlock.insertMany(data.cmsBlock);
         }
 
         // Insert ContactInformations data if it exists
@@ -79,7 +79,9 @@ program
 
         console.log("Data inserted successfully");
       } catch (err) {
-        console.error(`${filename} not found on data folder`);
+        console.error(`Error on : ${filename} `);
+        console.error("");
+        console.error(err);
         program.help();
       }
     } catch (error) {

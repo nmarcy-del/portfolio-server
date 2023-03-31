@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
-const path = require("path");
-const config = require("../config");
-const domain = config.domain;
-const subDomain = config.subDomain;
+const config = require("../config/config");
+const mongoDbDocker = config.mongoDbDocker;
 const dbName = config.mongoDbName;
-const mongoDbUri = `mongodb://${subDomain}.${domain}/${dbName}`;
+const mongoDbUri = `mongodb://${mongoDbDocker}/${dbName}`;
 
 mongoose.set("strictQuery", false); // prepare the future change on mongoose
 

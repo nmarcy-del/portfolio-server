@@ -1,5 +1,10 @@
 const Works = require("../models/works");
 
+const handleValidationError = (err) => {
+  const errors = Object.values(err.errors).map((error) => error.message);
+  return errors;
+};
+
 // GET - Get works
 const getWorks = async (req, res) => {
   try {
@@ -23,6 +28,20 @@ const getWorkById = async (req, res) => {
   }
 };
 
+// GET - Get works by start date
+const getWorksByStartDate = async (req, res) => {
+  try {
+    const sortOrder = req.params.sortOrder === "desc" ? "desc" : "asc";
+    if (sortOrder !== "asc" && sortOrder !== "desc") {
+      return res.status(400).json({ message: "Invalid sort order" });
+    }
+    const works = await Works.find().sort({ startDate: sortOrder });
+    res.json(works);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // POST - Create work
 const createWork = async (req, res) => {
   const user = req.user;
@@ -31,16 +50,22 @@ const createWork = async (req, res) => {
   }
   const work = new Works({
     title: req.body.title,
-    shortDesc: req.body.shortDesc,
     img: req.body.img,
+    place: req.body.place,
     desc: req.body.desc,
-    technologie: req.body.technologie,
+    technologies: req.body.technologies,
+    startDate: new Date(req.body.startDate),
+    endDate: req.body.endDate ? new Date(req.body.endDate) : null,
   });
   try {
     const newWork = await work.save();
     res.status(201).json(newWork);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    if (err.name === "ValidationError") {
+      const errors = handleValidationError(err);
+      return res.status(400).json({ message: errors });
+    }
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -56,14 +81,21 @@ const updateWork = async (req, res) => {
       return res.status(404).json({ message: "Work not found" });
     }
     work.title = req.body.title;
-    work.shortDesc = req.body.shortDesc;
     work.img = req.body.img;
+    work.place = req.body.place;
     work.desc = req.body.desc;
-    work.technologie = req.body.technologie;
+    work.technologies = req.body.technologies;
+    work.startDate = new Date(req.body.startDate);
+    work.endDate = new Date(req.body.endDate);
+
     const updatedWork = await work.save();
     res.json(updatedWork);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    if (err.name === "ValidationError") {
+      const errors = handleValidationError(err);
+      return res.status(400).json({ message: errors });
+    }
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -85,4 +117,11 @@ const deleteWork = async (req, res) => {
   }
 };
 
-module.exports = { getWorks, getWorkById, createWork, updateWork, deleteWork };
+module.exports = {
+  getWorks,
+  getWorkById,
+  getWorksByStartDate,
+  createWork,
+  updateWork,
+  deleteWork,
+};

@@ -1,7 +1,7 @@
 const passport = require("passport");
 const passportJwt = require("passport-jwt");
 const AdminUser = require("../models/adminUsers");
-const config = require("../config");
+const config = require("../config/config");
 const ExtractJwt = passportJwt.ExtractJwt;
 const JwtStrategy = passportJwt.Strategy;
 

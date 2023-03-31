@@ -23,6 +23,20 @@ const getSkillById = async (req, res) => {
   }
 };
 
+// GET - Get Skills by order
+const getSkillsByOrder = async (req, res) => {
+  try {
+    const sortOrder = req.params.sortOrder === "desc" ? "desc" : "asc";
+    if (sortOrder !== "asc" && sortOrder !== "desc") {
+      return res.status(400).json({ message: "Invalid sort order" });
+    }
+    const skills = await Skills.find().sort({ order: sortOrder });
+    res.json(skills);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // POST - Create skill
 const createSkill = async (req, res) => {
   const user = req.user;
@@ -32,6 +46,7 @@ const createSkill = async (req, res) => {
   const skill = new Skills({
     name: req.body.name,
     img: req.body.img,
+    order: req.body.order,
   });
   try {
     const newSkill = await skill.save();
@@ -54,6 +69,7 @@ const updateSkill = async (req, res) => {
     }
     skill.name = req.body.name;
     skill.img = req.body.img;
+    skill.order = req.body.order;
     const updatedSkill = await skill.save();
     res.json(updatedSkill);
   } catch (err) {
@@ -82,6 +98,7 @@ const deleteSkill = async (req, res) => {
 module.exports = {
   getSkills,
   getSkillById,
+  getSkillsByOrder,
   createSkill,
   updateSkill,
   deleteSkill,

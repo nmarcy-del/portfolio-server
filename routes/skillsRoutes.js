@@ -8,6 +8,9 @@ router.get("/skills", skillsController.getSkills);
 // GET - Get skills by id
 router.get("/skills/:id", skillsController.getSkillById);
 
+// GET - Get tools by order
+router.get("/skills/order/:sortOrder?", skillsController.getSkillsByOrder);
+
 // POST - Create skill
 router.post("/skills", skillsController.createSkill);
 

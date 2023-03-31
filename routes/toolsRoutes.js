@@ -8,6 +8,9 @@ router.get("/tools", toolsController.getTools);
 // GET - Get tool by id
 router.get("/tools/:id", toolsController.getToolById);
 
+// GET - Get tools by order
+router.get("/tools/order/:sortOrder?", toolsController.getToolsByOrder);
+
 // POST - Create tool
 router.post("/tools", toolsController.createTool);
 

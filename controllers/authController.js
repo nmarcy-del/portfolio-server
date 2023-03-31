@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const AdminUser = require("../models/adminUsers");
-const config = require("../config");
+const config = require("../config/config");
 const jwtSecret = config.jwtSecret;
 
 // Log admin user
@@ -18,20 +18,10 @@ const login = async (req, res) => {
       algorithm: "HS256",
     });
 
-    const csrfToken = req.csrfToken();
-    // Create XSRF-TOKEN, set expiration at 1800000 milliseconds (30 minutes)
-    res.cookie("XSRF-TOKEN", csrfToken, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "strict",
-      domain: process.env.DOMAIN || "myapp.local",
-      path: "/",
-      maxAge: 1800000,
-    });
-
     return res.json({
       message: "Login successful",
-      data: { token, csrfToken },
+      token: { token },
+      username: username,
     });
   } catch (error) {
     console.error(error);
@@ -39,16 +29,24 @@ const login = async (req, res) => {
   }
 };
 
-// Delog admin user
-const logout = (req, res) => {
-  // Remove the token cookie
-  res.clearCookie("XSRF-TOKEN", {
-    httpOnly: true,
-    domain: process.env.DOMAIN || "myapp.local",
-    path: "/",
-    expires: new Date(1),
-  });
-  res.json({ message: "Logout successful" });
+// Logout admin user
+const logout = async (req, res) => {
+  try {
+    // Remove the csrf token cookie
+    res.clearCookie("csrfToken", {
+      hostOnly: false,
+      httpOnly: true,
+      secure: false,
+      sameSite: "strict",
+      domain: `.${config.domain}`,
+      path: "/",
+      maxAge: 0,
+    });
+    return res.json({ message: "Logout successful" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
 };
 
 module.exports = { login, logout };

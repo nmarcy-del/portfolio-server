@@ -8,6 +8,10 @@ const toolsSchema = new mongoose.Schema({
   img: {
     type: String,
   },
+  order: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Tools = mongoose.model("Tools", toolsSchema);

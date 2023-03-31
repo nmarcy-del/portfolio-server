@@ -25,6 +25,21 @@ const getContactInformationById = async (req, res) => {
   }
 };
 
+// GET - Get a contact information by addressName
+const getContactInformationByAddressName = async (req, res) => {
+  try {
+    const contactInformation = await ContactInformations.findOne({
+      addressName: req.params.addressName,
+    });
+    if (!contactInformation) {
+      return res.status(404).json({ message: "Contact information not found" });
+    }
+    res.json(contactInformation);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // POST - Create a new contact information
 const createContactInformation = async (req, res) => {
   const user = req.user;
@@ -85,6 +100,7 @@ module.exports = {
   createContactInformation,
   getAllContactInformations,
   getContactInformationById,
+  getContactInformationByAddressName,
   updateContactInformation,
   deleteContactInformation,
 };

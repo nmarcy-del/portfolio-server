@@ -1,24 +1,42 @@
 {
-  "cms": [
+  "cmsBlock": [
     {
       "title": "Mon titre 1",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "img": "img1.jpg",
-      "section": "section 1",
-      "typeWriter": "Typewriter 1"
+      "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
+      "img": "https://media.istockphoto.com/id/180844319/fr/photo/alpes-suisses.jpg?s=612x612&w=0&k=20&c=lBuH1eH5z4QKbK-7oIqhi5QL5pb4On1fVYv7_1SCdzk=",
+      "section": "section 1"
     },
     {
       "title": "Mon titre 2",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "img": "img2.jpg",
-      "section": "section 2",
-      "typeWriter": "Typewriter 2"
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "img": "https://media.istockphoto.com/id/180844319/fr/photo/alpes-suisses.jpg?s=612x612&w=0&k=20&c=lBuH1eH5z4QKbK-7oIqhi5QL5pb4On1fVYv7_1SCdzk=",
+      "section": "section 2"
+    },
+    {
+      "title": "Mon titre 3",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "img": "https://media.istockphoto.com/id/180844319/fr/photo/alpes-suisses.jpg?s=612x612&w=0&k=20&c=lBuH1eH5z4QKbK-7oIqhi5QL5pb4On1fVYv7_1SCdzk=",
+      "section": "section 2"
+    },
+    {
+      "title": "Mon titre 4",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "img": "https://media.istockphoto.com/id/180844319/fr/photo/alpes-suisses.jpg?s=612x612&w=0&k=20&c=lBuH1eH5z4QKbK-7oIqhi5QL5pb4On1fVYv7_1SCdzk=",
+      "section": "section 2"
+    },
+    {
+      "title": "Mon titre 5",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "img": "https://media.istockphoto.com/id/180844319/fr/photo/alpes-suisses.jpg?s=612x612&w=0&k=20&c=lBuH1eH5z4QKbK-7oIqhi5QL5pb4On1fVYv7_1SCdzk=",
+      "section": "section 2"
     }
   ],
   "contactInformations": [
     {
-      "adressL1": "Adresse ligne 1",
-      "adressL2": "Adresse ligne 2",
+      "addressName": "Mon Adresse perso",
+      "name": "John Wich",
+      "addressL1": "Route du test",
+      "addressL2": "Chez Untel",
       "postalCode": "75000",
       "city": "Paris",
       "phone": "0123456789",
@@ -30,37 +48,112 @@
   "skills": [
     {
       "name": "Skill 1",
-      "img": "skill1.png"
+      "img": "https://media.istockphoto.com/id/1412438498/vector/modern-square-tech-logo-design.jpg?s=612x612&w=0&k=20&c=ajxrQbCRK-HCeVE9kPMKqGCNnzoRS6UAJfstNKXWwTU=",
+      "order": 1
+    },
+    {
+      "name": "Skill 4",
+      "img": "https://media.istockphoto.com/id/1412438498/vector/modern-square-tech-logo-design.jpg?s=612x612&w=0&k=20&c=ajxrQbCRK-HCeVE9kPMKqGCNnzoRS6UAJfstNKXWwTU=",
+      "order": 2
+    },
+    {
+      "name": "Skill 5",
+      "img": "https://media.istockphoto.com/id/1412438498/vector/modern-square-tech-logo-design.jpg?s=612x612&w=0&k=20&c=ajxrQbCRK-HCeVE9kPMKqGCNnzoRS6UAJfstNKXWwTU=",
+      "order": 3
+    },
+    {
+      "name": "Skill 18",
+      "img": "https://media.istockphoto.com/id/1412438498/vector/modern-square-tech-logo-design.jpg?s=612x612&w=0&k=20&c=ajxrQbCRK-HCeVE9kPMKqGCNnzoRS6UAJfstNKXWwTU=",
+      "order": 4
     },
     {
       "name": "Skill 2",
-      "img": "skill2.png"
+      "img": "https://media.istockphoto.com/id/1412438498/vector/modern-square-tech-logo-design.jpg?s=612x612&w=0&k=20&c=ajxrQbCRK-HCeVE9kPMKqGCNnzoRS6UAJfstNKXWwTU=",
+      "order": 5
+    },
+    {
+      "name": "Skill 3",
+      "img": "https://media.istockphoto.com/id/1412438498/vector/modern-square-tech-logo-design.jpg?s=612x612&w=0&k=20&c=ajxrQbCRK-HCeVE9kPMKqGCNnzoRS6UAJfstNKXWwTU=",
+      "order": 6
     }
   ],
   "tools": [
     {
       "name": "Tool 1",
-      "img": "tool1.png"
+      "img": "https://img.freepik.com/free-vector/abstract-technology-modern-logo-design_487879-506.jpg?w=360",
+      "order": 6
     },
     {
       "name": "Tool 2",
-      "img": "tool2.png"
+      "img": "https://img.freepik.com/free-vector/abstract-technology-modern-logo-design_487879-506.jpg?w=360",
+      "order": 1
+    },
+    {
+      "name": "Tool 3",
+      "img": "https://img.freepik.com/free-vector/abstract-technology-modern-logo-design_487879-506.jpg?w=360",
+      "order": 5
+    },
+    {
+      "name": "Tool 4",
+      "img": "https://img.freepik.com/free-vector/abstract-technology-modern-logo-design_487879-506.jpg?w=360",
+      "order": 4
+    },
+    {
+      "name": "Tool 5",
+      "img": "https://img.freepik.com/free-vector/abstract-technology-modern-logo-design_487879-506.jpg?w=360",
+      "order": 8
+    },
+    {
+      "name": "Tool 6",
+      "img": "https://img.freepik.com/free-vector/abstract-technology-modern-logo-design_487879-506.jpg?w=360",
+      "order": 2
     }
   ],
   "works": [
     {
       "title": "Work 1",
-      "shortDesc": "Short description 1",
-      "img": "work1.jpg",
-      "desc": "Description 1",
-      "technologie": "Technologie 1"
+      "img": "https://q8i4i8g7.rocketcdn.me/wp-content/uploads/2020/10/99gen_circlepeople.png",
+      "place": "Paris (FR, 75)",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "technologies": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "startDate": "2019-02-01",
+      "endDate": "2019-09-01"
     },
     {
       "title": "Work 2",
-      "shortDesc": "Short description 2",
-      "img": "work2.jpg",
-      "desc": "Description 2",
-      "technologie": "Technologie 2"
+      "img": "https://q8i4i8g7.rocketcdn.me/wp-content/uploads/2020/10/99gen_circlepeople.png",
+      "place": "Lille (FR, 59)",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "technologies": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "startDate": "2019-09-01",
+      "endDate": "2021-06-01"
+    },
+    {
+      "title": "Work 3",
+      "img": "https://q8i4i8g7.rocketcdn.me/wp-content/uploads/2020/10/99gen_circlepeople.png",
+      "place": "Lille (FR, 59)",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "technologies": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "startDate": "2021-06-01",
+      "endDate": "2022-02-01"
+    },
+    {
+      "title": "Work 4",
+      "img": "https://q8i4i8g7.rocketcdn.me/wp-content/uploads/2020/10/99gen_circlepeople.png",
+      "place": "Lausanne (CH, VD)",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "technologies": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "startDate": "2022-02-01",
+      "endDate": "2022-08-01"
+    },
+    {
+      "title": "Work 5",
+      "img": "https://q8i4i8g7.rocketcdn.me/wp-content/uploads/2020/10/99gen_circlepeople.png",
+      "place": "La-Chaux-De-Fonds (CH, NE)",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "technologies": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "startDate": "2022-08-01",
+      "endDate": ""
     }
   ]
 }

@@ -2,11 +2,19 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 const contactInformationSchema = new mongoose.Schema({
-  adressL1: {
+  addressName: {
     type: String,
     required: true,
   },
-  adressL2: {
+  name: {
+    type: String,
+    required: true,
+  },
+  addressL1: {
+    type: String,
+    required: true,
+  },
+  addressL2: {
     type: String,
   },
   postalCode: {
@@ -35,6 +43,9 @@ const contactInformationSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: (value) => {
+        if (value === "") {
+          return true;
+        }
         return validator.isURL(value);
       },
       message: "{VALUE} is not a valid URL",
@@ -44,6 +55,9 @@ const contactInformationSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: (value) => {
+        if (value === "") {
+          return true;
+        }
         return validator.isURL(value);
       },
       message: "{VALUE} is not a valid URL",

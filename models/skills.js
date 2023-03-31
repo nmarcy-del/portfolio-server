@@ -8,6 +8,10 @@ const skillsSchema = new mongoose.Schema({
   img: {
     type: String,
   },
+  order: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Skills = mongoose.model("Skills", skillsSchema);

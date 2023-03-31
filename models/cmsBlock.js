@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const cmsSchema = new mongoose.Schema({
+const cmsBlockSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -16,11 +16,8 @@ const cmsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  typeWriter: {
-    type: String,
-  },
 });
 
-const CMS = mongoose.model("CMS", cmsSchema);
+const CmsBlock = mongoose.model("cmsBlock", cmsBlockSchema);
 
-module.exports = CMS;
+module.exports = CmsBlock;

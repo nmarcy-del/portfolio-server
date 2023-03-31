@@ -1,5 +1,5 @@
 const cors = require("cors");
-const config = require("../config");
+const config = require("../config/config");
 const domain = config.domain.replace(/\./g, "\\.");
 const corsWhitelist = [`^https?:\\/\\/.*\\.${domain}(:\\d+)?\\/?$`];
 

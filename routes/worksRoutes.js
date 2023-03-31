@@ -8,6 +8,12 @@ router.get("/works", worksController.getWorks);
 // GET - Get works by id
 router.get("/works/:id", worksController.getWorkById);
 
+// GET - Get works by start date with order params
+router.get(
+  "/works/byStartDate/:sortOrder?",
+  worksController.getWorksByStartDate
+);
+
 // POST - Create work
 router.post("/works", worksController.createWork);
 

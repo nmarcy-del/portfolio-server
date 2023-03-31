@@ -1,79 +1,77 @@
-const Cms = require("../models/cms");
+const CmsBlock = require("../models/cmsBlock");
 
-// GET - Get all CMS
-const getCms = async (req, res) => {
+// GET - Get all CMS Block
+const getCmsBlock = async (req, res) => {
   try {
-    const cms = await Cms.find();
-    res.json(cms);
+    const cmsBlock = await CmsBlock.find();
+    res.json(cmsBlock);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-// GET - Get CMS by id
-const getCmsById = async (req, res) => {
+// GET - Get Cms Block by id
+const getCmsBlockById = async (req, res) => {
   try {
-    const cms = await Cms.findById(req.params.id);
-    if (!cms) {
+    const cmsBlock = await CmsBlock.findById(req.params.id);
+    if (!cmsBlock) {
       return res.status(404).json({ message: "CMS not found" });
     }
-    res.json(cms);
+    res.json(cmsBlock);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
 // GET - Get CMS by section
-const getCmsBySection = async (req, res) => {
+const getCmsBlockBySection = async (req, res) => {
   try {
     const section = req.params.section;
-    const cms = await Cms.find({ section: section });
-    res.json(cms);
+    const cmsBlock = await CmsBlock.find({ section: section });
+    res.json(cmsBlock);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
 // POST - Create CMS
-const createCms = async (req, res) => {
+const createCmsBlock = async (req, res) => {
   const user = req.user;
   if (!user || !user.canEdit) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  const { title, content, img, section, typeWriter } = req.body;
-  const cms = new Cms({
+  const { title, content, img, section } = req.body;
+  const cmsBlock = new CmsBlock({
     title,
     content,
     img: img || "",
     section,
-    typeWriter: typeWriter || "",
   });
   try {
-    const newCms = await cms.save();
-    res.status(201).json(newCms);
+    const newCmsBlock = await cmsBlock.save();
+    res.status(201).json(newCmsBlock);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
 
 // PUT - Modify CMS
-const updateCms = async (req, res) => {
+const updateCmsBlock = async (req, res) => {
   const user = req.user;
   if (!user || !user.canEdit) {
     return res.status(401).json({ message: "Unauthorized" });
   }
   try {
-    const cms = await Cms.findById(req.params.id);
-    if (!cms) {
+    const cmsBlock = await CmsBlock.findById(req.params.id);
+    if (!cmsBlock) {
       return res.status(404).json({ message: "CMS not found" });
     }
-    const { title, content, img, section, typeWriter } = req.body;
-    cms.title = title;
-    cms.content = content;
-    cms.img = img || "";
-    cms.section = section;
-    cms.typeWriter = typeWriter || "";
-    const updatedCms = await cms.save();
+    const { title, content, img, section } = req.body;
+    cmsBlock.title = title;
+    cmsBlock.content = content;
+    cmsBlock.img = img || "";
+    cmsBlock.section = section;
+    const updatedCms = await cmsBlock.save();
     res.json(updatedCms);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -81,17 +79,17 @@ const updateCms = async (req, res) => {
 };
 
 // DELETE - Delete CMS
-const deleteCms = async (req, res) => {
+const deleteCmsBlock = async (req, res) => {
   const user = req.user;
   if (!user || !user.canEdit) {
     return res.status(401).json({ message: "Unauthorized" });
   }
   try {
-    const cms = await Cms.findById(req.params.id);
-    if (!cms) {
+    const cmsBlock = await CmsBlock.findById(req.params.id);
+    if (!cmsBlock) {
       return res.status(404).json({ message: "CMS not found" });
     }
-    await cms.remove();
+    await cmsBlock.remove();
     res.json({ message: "CMS deleted" });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -99,10 +97,10 @@ const deleteCms = async (req, res) => {
 };
 
 module.exports = {
-  getCms,
-  getCmsById,
-  createCms,
-  updateCms,
-  deleteCms,
-  getCmsBySection,
+  getCmsBlock,
+  getCmsBlockById,
+  getCmsBlockBySection,
+  createCmsBlock,
+  updateCmsBlock,
+  deleteCmsBlock,
 };
