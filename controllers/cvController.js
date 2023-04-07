@@ -32,35 +32,56 @@ const downloadCV = (req, res) => {
 
 // POST - Upload CV
 const uploadCV = async (req, res) => {
-  try {
-    const latestFile = await CVFile.findOne().sort({ createdAt: -1 });
-    if (latestFile) {
-      const oldFilepath = path.join(
-        __dirname,
-        "..",
-        config.publicFolder,
-        latestFile.filename
-      );
-      fs.unlink(oldFilepath, (err) => {
-        if (err) {
-          console.error("Error deleting old file:", err);
-        }
-      });
+  const user = req.user;
+  if (!user || !user.canEdit) {
+    if (!user) {
+      return res.status(401).json({ message: "Unauthorized" });
     }
+    if (!user.canEdit) {
+      return res
+        .status(403)
+        .json({ message: "User doesn't have write access" });
+    }
+  } else {
+    try {
+      const latestFile = await CVFile.findOne().sort({ createdAt: -1 });
 
-    const newFile = new CVFile({ filename: req.file.filename });
-    await newFile.save();
-    res.json({
-      message: "CV uploaded successfully",
-      filename: req.file.filename,
-    });
-  } catch (err) {
-    res.status(500).json({ message: "Error uploading CV: " + err.message });
+      const newFile = new CVFile({ filename: req.file.filename });
+      await newFile.save();
+
+      if (latestFile) {
+        const oldFilepath = path.join(
+          __dirname,
+          "..",
+          config.publicFolder,
+          latestFile.filename
+        );
+        fs.unlink(oldFilepath, (err) => {
+          if (err) {
+            console.error("Error deleting old file:", err);
+          }
+        });
+      }
+
+      res.json({
+        message: "CV uploaded successfully",
+        filename: req.file.filename,
+      });
+    } catch (err) {
+      res.status(500).json({ message: "Error uploading CV: " + err.message });
+    }
   }
 };
 
 // DELETE - Delete CV
 const deleteCV = async (req, res) => {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
+  }
   try {
     const latestFile = await CVFile.findOne().sort({ createdAt: -1 });
     if (latestFile) {

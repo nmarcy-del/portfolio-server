@@ -37,8 +37,11 @@ const getCmsBlockBySection = async (req, res) => {
 // POST - Create CMS
 const createCmsBlock = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   const { title, content, img, section } = req.body;
   const cmsBlock = new CmsBlock({
@@ -58,8 +61,11 @@ const createCmsBlock = async (req, res) => {
 // PUT - Modify CMS
 const updateCmsBlock = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const cmsBlock = await CmsBlock.findById(req.params.id);
@@ -81,8 +87,11 @@ const updateCmsBlock = async (req, res) => {
 // DELETE - Delete CMS
 const deleteCmsBlock = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const cmsBlock = await CmsBlock.findById(req.params.id);
