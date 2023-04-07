@@ -43,8 +43,11 @@ const getContactInformationByAddressName = async (req, res) => {
 // POST - Create a new contact information
 const createContactInformation = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   const contactInformation = new ContactInformations(req.body);
   try {
@@ -58,8 +61,11 @@ const createContactInformation = async (req, res) => {
 // PUT - Update a contact information by ID
 const updateContactInformation = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const contactInformation = await ContactInformations.findById(
@@ -79,8 +85,11 @@ const updateContactInformation = async (req, res) => {
 // DELETE - Delete a contact information by ID
 const deleteContactInformation = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const contactInformation = await ContactInformations.findById(

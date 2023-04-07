@@ -45,8 +45,11 @@ const getWorksByStartDate = async (req, res) => {
 // POST - Create work
 const createWork = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   const work = new Works({
     title: req.body.title,
@@ -72,8 +75,11 @@ const createWork = async (req, res) => {
 // PUT - Modify work
 const updateWork = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const work = await Works.findById(req.params.id);
@@ -102,8 +108,11 @@ const updateWork = async (req, res) => {
 // DELETE - Delete work
 const deleteWork = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const work = await Works.findById(req.params.id);

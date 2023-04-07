@@ -40,8 +40,11 @@ const getSkillsByOrder = async (req, res) => {
 // POST - Create skill
 const createSkill = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   const skill = new Skills({
     name: req.body.name,
@@ -59,8 +62,11 @@ const createSkill = async (req, res) => {
 // PUT - Modify skill
 const updateSkill = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const skill = await Skills.findById(req.params.id);
@@ -80,8 +86,11 @@ const updateSkill = async (req, res) => {
 // DELETE - Delete skill
 const deleteSkill = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const skill = await Skills.findById(req.params.id);

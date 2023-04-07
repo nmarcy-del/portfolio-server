@@ -40,8 +40,11 @@ const getToolsByOrder = async (req, res) => {
 // POST - Create tool
 const createTool = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   const tool = new Tools({
     name: req.body.name,
@@ -59,8 +62,11 @@ const createTool = async (req, res) => {
 // PUT - Modify tool
 const updateTool = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const tool = await Tools.findById(req.params.id);
@@ -80,8 +86,11 @@ const updateTool = async (req, res) => {
 // DELETE - Delete tool
 const deleteTool = async (req, res) => {
   const user = req.user;
-  if (!user || !user.canEdit) {
+  if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
   }
   try {
     const tool = await Tools.findById(req.params.id);

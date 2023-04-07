@@ -32,6 +32,13 @@ const downloadCV = (req, res) => {
 
 // POST - Upload CV
 const uploadCV = async (req, res) => {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
+  }
   try {
     const latestFile = await CVFile.findOne().sort({ createdAt: -1 });
     if (latestFile) {
@@ -61,6 +68,13 @@ const uploadCV = async (req, res) => {
 
 // DELETE - Delete CV
 const deleteCV = async (req, res) => {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
+  }
   try {
     const latestFile = await CVFile.findOne().sort({ createdAt: -1 });
     if (latestFile) {
