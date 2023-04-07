@@ -1,3 +1,5 @@
+// uploadMiddleware.js
+
 const multer = require("multer");
 const path = require("path");
 const config = require("../config/config");
@@ -25,4 +27,15 @@ const upload = multer({
   },
 });
 
-module.exports = upload;
+const uploadMiddleware = (req, res, next) => {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  if (!user.canEdit) {
+    return res.status(403).json({ message: "User doesn't have write access" });
+  }
+  upload.single("cv")(req, res, next);
+};
+
+module.exports = uploadMiddleware;

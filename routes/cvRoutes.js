@@ -10,9 +10,9 @@ router.get("/cv", cvController.getCVFilename);
 router.get("/cv/download/:filename", cvController.downloadCV);
 
 // POST - Upload CV
-router.post("/cv", uploadMiddleware.single("cv"), cvController.uploadCV);
+router.post("/cv", uploadMiddleware, cvController.uploadCV);
 
 // Delete - Delete CV
-router.delete("/cv", uploadMiddleware.single("cv"), cvController.deleteCV);
+router.delete("/cv", cvController.deleteCV);
 
 module.exports = router;
