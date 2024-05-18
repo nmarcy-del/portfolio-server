@@ -31,7 +31,9 @@ program
       console.log("Admin users:");
       console.log("-----------------------");
       users.forEach((user) => {
-        console.log(`- ${user.username}${user.canEdit ? " (Editor)" : ""}`);
+        console.log(
+          `- ${user.username}${user.canEdit ? " (Editor)" : " (Demo)"}`
+        );
       });
       console.log("=======================");
     } catch (err) {
